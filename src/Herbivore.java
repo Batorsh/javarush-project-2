@@ -10,8 +10,8 @@ public class Herbivore implements Runnable {
 
     Field field;
 
-    int food = 1;
-    int MAX_FOOD = 1;
+    int food = 3;
+    int MAX_FOOD = 3;
     boolean alive = true;
 
     public Herbivore(Field field) {
@@ -28,9 +28,10 @@ public class Herbivore implements Runnable {
                     int randomInt = ThreadLocalRandom.current().nextInt(100);
                     //System.out.println("Random(100) " + randomInt);
                     if (randomInt > 10) {
-                        System.out.println(this.getName() + " ate " + plant.name + " food = " + food);
+
                         food = food + plant.WEIGHT;
                         food = Math.min(food, MAX_FOOD);
+                        System.out.println(this.getName() + " ate " + plant.name + " food = " + food);
                         plant.alive = false;
                         plants.remove(plant);
                     }
@@ -49,7 +50,7 @@ public class Herbivore implements Runnable {
             synchronized (field) {
                 eat(field.getPlants());
                 System.out.println("Quantity of " + EMOJI + " on " + field.getCoordinate() + " = " + field.herbivores.size());
-                if (field.predators.size() > 1) {
+                if (field.herbivores.size() > 1) {
                     //reproduction();
                 }
                 try {

@@ -39,11 +39,12 @@ public class Predator extends Animal implements Runnable, Reproductionable{
                 int randomInt = ThreadLocalRandom.current().nextInt(100);
                 //System.out.println("Random(100) " + randomInt);
                 if (randomInt > herbivore.chance) {
-                    System.out.println(this.getName() + " ate " + herbivore.name + " food = " + food);
+
                     food = food + herbivore.WEIGHT;
                     food = Math.min(food, MAX_FOOD);
                     herbivore.alive = false;
                     herbivores.remove(herbivore);
+                    System.out.println(this.getName() + " ate " + herbivore.name + " food = " + food);
                 }
             }
             return;

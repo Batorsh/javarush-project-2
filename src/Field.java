@@ -23,7 +23,7 @@ public class Field {
     }
 
     public String getCoordinate() {
-        return "Field " + coordinateX + " " + coordinateY;
+        return "Field " + "[" + coordinateX + "][" + coordinateY + "]";
     }
 
     synchronized public List<Predator> getPredators() {
